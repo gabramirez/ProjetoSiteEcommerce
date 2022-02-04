@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NFT Challenge</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<style>
+    #produtos, #carrinho{
+     max-width: 900px;
+     margin: 0 auto;
+     padding:0 2%;
+     display: flex;
+    }
+
+    img {
+    max-width: 112%;
+    max-height: 112%; 
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+    #carrinho{
+     max-width: 900px;
+     margin: 0 auto;
+     padding:0 2%;
+     display: block;
+
+    }
+
+    .produto-single{
+      width: 33.3%;
+      padding:0 20px;
+      
+
+    }
+    #produtos{
+      font-size: 22px;
+      
+
+    }
+    #buttoncar{
+      font-size: 20px;
+      margin-left: 13.3px;
+      border: 1px solid black;
+
+    }
+
+
+
+
+    body {
+    background-color: #F0F8FF;
+    min-width:372px;
+    
+
+    }
+</style>
+  
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom shadow-sm mb-3">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="dashboard.html"><strong>Lts Store</strong></a> 
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="dashboard.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="produtos.html">Produtos</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Menu
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Sobre</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Trabalhos</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Contato</a></li>
+                </ul>
+              </li>
+            </ul>
+
+           <!--Icone registrar-->
+
+            <div class="aligh-self-end">
+              <ul class= "navbar-nav">
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white">Registre-se</a>
+                </li>
+
+                <!--entrar-->
+
+                <li class="nav-item">
+                  <a href="telainicial.html" class="nav-link text-white">Entrar</a>
+                </li>
+
+                <!--Icone carrinho-->
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </svg>
+                  </a>
+                </li>
+                
+                
+              </ul>
+
+              <!--Barra de busca-->
+            </div>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-warning" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      
+      <br><br>
+
+      <!--produtos-->
+      <div id="produtos">
+      </div>
+
+      <!--carrinho-->
+      <h3>Carrinho</h3>
+      <div id="carrinho">
+      </div>
+      <script>
+        const items = [
+        {
+          id: 0,
+          nome: 'Air Jordan',
+          img: 'tenis1.jpg',
+          quantidade: 0
+         },
+         {
+          id: 1,
+          nome: 'Yeezy',
+          img: 'tenis1.jpg',
+          quantidade: 0
+        },
+         {
+          id: 2,
+          nome: 'Vans',
+          img: 'tenis1.jpg',
+          quantidade: 0
+         },
+        ]
+
+        inicializarLoja = () => {
+          var containerProdutos = document.getElementById('produtos')
+          items.map((val)=>{
+            containerProdutos.innerHTML+= `
+
+            <div class="produto-single">
+              <img src="`+val.img+`" />
+              <p> `+val.nome+` </p>
+              <a id="buttoncar" class="btn btn-primary" key="`+val.id+`" href="#">Adicionar ao carrinho!<a/>
+                </div>
+            `;
+            
+            
+          })
+        }
+        
+        inicializarLoja();
+        
+
+        atualizarCarrinho = () => {
+          var containerCarrinho = document.getElementById('carrinho')
+          containerCarrinho.innerHTML = "";
+          items.map((val)=>{
+            if(val.quantidade > 0){
+            containerCarrinho.innerHTML+= `
+
+            <p>`+val.nome+` | quantidade: `+val.quantidade+` </p>
+            <hr>
+
+            
+            `;
+           }
+            
+          })
+        }
+
+        var links = document.getElementsByTagName('a');
+
+        for(var i = 0; i <links.length; i++){
+          links[i].addEventListener('click',function(){
+            let key = this.getAttribute('key');
+            items[key].quantidade++;
+            atualizarCarrinho();
+            return false;
+
+          })
+
+        }
+      </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
